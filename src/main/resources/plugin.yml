@@ -1,0 +1,45 @@
+name: SMPTools
+version: 1.0.0
+main: de.smptools.SMPTools
+api-version: '1.21'
+authors: [DeFyuse]
+description: A custom status and group plugin for Purpur 1.21.1
+commands:
+  status:
+    description: Set your chat status
+    usage: /status <status|clear>
+    permission: smptools.use
+    permission-message: <red>You do not have permission to use this command.
+  group:
+    description: Manage and join groups
+    usage: /group <join|leave|add|remove>
+    permission: smptools.use
+    permission-message: <red>No permission.
+  groupchat:
+    description: Send a message to your group
+    usage: /g <message>
+    aliases: [g, gc]
+    permission: smptools.use
+    permission-message: <red>No permission.
+  rules:
+    description: Show server rules
+    usage: /rules
+    permission: smptools.use
+    permission-message: <red>No permission.
+  sit:
+    description: Sit down at your current location
+    usage: /sit
+    permission: smptools.use
+    permission-message: <red>No permission.
+  ping:
+    description: Show your current ping
+    usage: /ping
+    permission: smptools.use
+    permission-message: <red>No permission.
+permissions:
+  smptools.use:
+    description: Allows usage of /status and /group join
+    default: true
+  smptools.admin:
+    description: Admin commands like /group add/remove
+    default: op

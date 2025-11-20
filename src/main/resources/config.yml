@@ -1,0 +1,95 @@
+# Config for SMPTools
+# Use MiniMessage format for prefixes: https://docs.adventure.kyori.net/minimessage/format.html
+
+# -----------------------------------------------------
+# CHAT & TABLIST
+# -----------------------------------------------------
+chat:
+  status-format: "<status> "
+  group-format: "<group> "
+  # Format für den Gruppenchat (/g <nachricht>)
+  group-msg-format: "<dark_gray>[<group>] <gray><player>: <white><message>"
+
+tablist:
+  status-format: "<status> "
+  group-format: "<group> "
+
+# -----------------------------------------------------
+# MOTD (Message of the Day)
+# -----------------------------------------------------
+# Nachricht beim Betreten des Servers
+motd:
+  - "<gradient:#5555FF:#55FFFF><bold>Willkommen auf dem userSMP!</bold></gradient>"
+  - "<gray>Nutze <yellow>/group</yellow> um einer Gruppe beizutreten."
+  - "<gray>Regeln: <yellow>/rules</yellow>"
+  - ""
+  - "<gray>Viel Spaß!"
+
+# -----------------------------------------------------
+# STATUS SYSTEM (/status)
+# -----------------------------------------------------
+status:
+  # Verfügbare Status-Optionen
+  options:
+    live:
+      display: "<gradient:#9146FF:#6441A5><bold>LIVE</bold></gradient>"
+      permission: "smptools.status.live"
+    recording:
+      display: "<red><bold>REC</bold></red>"
+      permission: "smptools.status.recording"
+
+  # Nachrichten für das Status-System
+  messages:
+    set: "<green>Dein Status wurde auf <status> <green>gesetzt."
+    cleared: "<yellow>Dein Status wurde entfernt."
+    invalid: "<red>Unbekannter Status. Verfügbar: <available>"
+    reminder-active: "<gray>Dein aktueller Status ist: <status>"
+    reminder-none: "<gray>Vergiss nicht, deinen Status mit <yellow>/status<gray> zu setzen!"
+
+# -----------------------------------------------------
+# REGELN (/rules)
+# -----------------------------------------------------
+rules:
+  - "<gradient:#FF5555:#FFAA00><bold>-- REGELN --</bold></gradient>"
+  - ""
+  - "<gradient:#55FFFF:#5555FF><bold>Allgemeine Regeln</bold></gradient>"
+  - "<dark_gray>» <gray>Keine Diskriminierung"
+  - "<dark_gray>» <gray>Die Entscheidungen der Admins respektieren"
+  - "<dark_gray>» <gray>Wer zwei Verwarnungen hat, wird dauerhaft gebannt"
+  - ""
+  - "<gradient:#55FFFF:#5555FF><bold>Minecraft Regeln</bold></gradient>"
+  - "<dark_gray>» <gray>Cheating ist verboten <dark_gray>(<red>Verwarnung + Clear<dark_gray>)"
+  - "<dark_gray>» <gray>Griefing ist nicht erlaubt"
+  - "<dark_gray>» <gray>Handeln ist erlaubt"
+  - "<dark_gray>» <gray>Automatische Farmen sind erlaubt <dark_gray>(<red>solange lagfrei<dark_gray>)"
+  - "<dark_gray>» <gray>Landschaft nicht verschandeln"
+  - ""
+  - "<gradient:#55FFFF:#5555FF><bold>PvP Regeln</bold></gradient>"
+  - "<dark_gray>» <gray>Angreifen nur mit eindeutigem <green>„Ja“"
+  - "<dark_gray>» <gray>Kein Combat-Logging oder /home im Kampf"
+  - "<dark_gray>» <gray>Items müssen zurückgegeben werden"
+  - "<dark_gray>» <gray>Zerstörte Blöcke wieder aufbauen"
+  - "<dark_gray>» <gray>Kein Crystal PvP"
+  - ""
+  - "<gray>Bei Fragen wende dich an einen Admin."
+
+# -----------------------------------------------------
+# SITZEN (/sit)
+# -----------------------------------------------------
+sit:
+  messages:
+    not-on-ground: "<red>Du musst auf dem Boden stehen, um dich zu setzen."
+    already-riding: "<red>Du sitzt bereits woanders."
+
+# -----------------------------------------------------
+# PING (/ping)
+# -----------------------------------------------------
+ping:
+  message: "<gray>Dein Ping beträgt: <green><ping>ms"
+
+# -----------------------------------------------------
+# GENERELLE NACHRICHTEN
+# -----------------------------------------------------
+messages:
+  no-permission: "<red>Dazu hast du keine Rechte."
+  not-in-group: "<red>Du bist in keiner Gruppe."

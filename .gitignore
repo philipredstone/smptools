@@ -1,0 +1,38 @@
+# Gradle
+.gradle/
+gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Eclipse
+.classpath
+.project
+.settings/
+bin/
+
+# VS Code
+.vscode/
+
+# System
+.DS_Store
+Thumbs.db
+
+# Java
+*.class
+*.log
+*.ctxt
+
+# Logs & Runtime
+*.log
+run/
+logs/
+crash-reports/
+debug/
+
