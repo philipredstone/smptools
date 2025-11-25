@@ -36,6 +36,12 @@ commands:
     usage: /ping
     permission: smptools.use
     permission-message: <red>No permission.
+  smptools:
+    description: Main command for SMPTools
+    usage: /smptools <reload>
+    aliases: [st]
+    permission: smptools.admin
+    permission-message: <red>No permission.
 permissions:
   smptools.use:
     description: Allows usage of /status and /group join

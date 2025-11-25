@@ -36,11 +36,14 @@ public class SMPTools extends JavaPlugin {
         getCommand("rules").setExecutor(new RulesCommand(this));
         getCommand("sit").setExecutor(new SitCommand(this));
         getCommand("ping").setExecutor(new PingCommand(this));
+        getCommand("smptools").setExecutor(new SMPToolsCommand(this));
         
         getServer().getPluginManager().registerEvents(new ChatListener(this), this);
         getServer().getPluginManager().registerEvents(new JoinListener(this), this);
         getServer().getPluginManager().registerEvents(new QuitListener(this), this);
         getServer().getPluginManager().registerEvents(new SitListener(this), this);
+        
+        updateAllPlayers();
         
         getLogger().info("SMPTools enabled!");
     }
@@ -88,9 +91,9 @@ public class SMPTools extends JavaPlugin {
 
         // 1. Append Status
         if (statusId != null && !statusId.isEmpty()) {
-            String displayRaw = getConfig().getString("statuses." + statusId + ".display");
+            String displayRaw = getConfig().getString("status.options." + statusId + ".display");
             if (displayRaw != null) {
-                String formatStr = getConfig().getString("status-tab-format", getConfig().getString("tab-format", "<status> ")); // fallback for backward compat
+                String formatStr = getConfig().getString("tablist.status-format", "<status> ");
                 Component statusComp = miniMessage.deserialize(displayRaw);
                 finalPrefix = finalPrefix.append(miniMessage.deserialize(formatStr, Placeholder.component("status", statusComp)));
             }
@@ -99,7 +102,7 @@ public class SMPTools extends JavaPlugin {
         // 2. Append Group
         if (groupId != null && !groupId.isEmpty() && groupManager.exists(groupId)) {
             String displayRaw = groupManager.getGroupDisplay(groupId);
-            String formatStr = getConfig().getString("group-tab-format", "<group> ");
+            String formatStr = getConfig().getString("tablist.group-format", "<group> ");
             Component groupComp = miniMessage.deserialize(displayRaw);
             finalPrefix = finalPrefix.append(miniMessage.deserialize(formatStr, Placeholder.component("group", groupComp)));
         }

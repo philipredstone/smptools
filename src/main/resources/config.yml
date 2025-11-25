@@ -19,11 +19,18 @@ tablist:
 # -----------------------------------------------------
 # Nachricht beim Betreten des Servers
 motd:
-  - "<gradient:#5555FF:#55FFFF><bold>Willkommen auf dem userSMP!</bold></gradient>"
-  - "<gray>Nutze <yellow>/group</yellow> um einer Gruppe beizutreten."
-  - "<gray>Regeln: <yellow>/rules</yellow>"
   - ""
-  - "<gray>Viel Spaß!"
+  - " <gradient:#00aaff:#00ffaa><bold>userSMP</bold></gradient>"
+  - ""
+  - " <gray>Willkommen zurück, <yellow><player><gray>!"
+  - " <gray>Aktueller Status: <status>"
+  - ""
+  - " <dark_gray>» <yellow>/group <gray>um Gruppen zu verwalten"
+  - " <dark_gray>» <yellow>/status <gray>um deinen Live/Rec Status zu setzen"
+  - " <dark_gray>» <yellow>/rules <gray>für die Regeln"
+  - ""
+  - " <gradient:#00aaff:#00ffaa>Viel Spaß beim Spielen!</gradient>"
+  - ""
 
 # -----------------------------------------------------
 # STATUS SYSTEM (/status)
@@ -63,6 +70,10 @@ rules:
   - "<dark_gray>» <gray>Handeln ist erlaubt"
   - "<dark_gray>» <gray>Automatische Farmen sind erlaubt <dark_gray>(<red>solange lagfrei<dark_gray>)"
   - "<dark_gray>» <gray>Landschaft nicht verschandeln"
+  - "<dark_gray>» <gray>Fremde Kisten locken gibt eine Verwarnung"
+  - ""
+  - "<gradient:#55FFFF:#5555FF><bold>Content / Status</bold></gradient>"
+  - "<dark_gray>» <gray>Es ist <red>VERPFLICHTEND<gray> den Status mit <yellow>/status<gray> zu setzen, wenn man live ist oder aufnimmt!"
   - ""
   - "<gradient:#55FFFF:#5555FF><bold>PvP Regeln</bold></gradient>"
   - "<dark_gray>» <gray>Angreifen nur mit eindeutigem <green>„Ja“"
