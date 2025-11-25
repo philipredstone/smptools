@@ -25,10 +25,35 @@ public class NameTagManager {
         String statusId = player.getPersistentDataContainer().get(plugin.getStatusKey(), PersistentDataType.STRING);
         String groupId = player.getPersistentDataContainer().get(plugin.getGroupKey(), PersistentDataType.STRING);
 
-        // Use a unique team name per player. 
-        // 1.21 supports long team names, so we don't need to truncate to 16 chars anymore.
-        // We use a prefix "st_" to avoid collisions with other plugins.
-        String teamName = "st_" + player.getName();
+        // Determine sort key for the group to ensure players are grouped together
+        String sortKey = "zzzz"; // Default for no group (puts them at the bottom)
+        if (groupId != null && !groupId.isEmpty() && plugin.getGroupManager().exists(groupId)) {
+            sortKey = groupId.toLowerCase();
+        }
+
+        // Status priority: '0' for active status (Live/Rec), '1' for none.
+        // This puts players with status above everyone else.
+        String statusPriority = "1";
+        if (statusId != null && !statusId.isEmpty()) {
+            statusPriority = "0";
+        }
+
+        // Use a unique team name per player that includes the group for sorting.
+        // 1.21 supports long team names.
+        // Format: st_<statusPriority>_<groupSortKey>_<playerName>
+        String teamName = "st_" + statusPriority + "_" + sortKey + "_" + player.getName();
+
+        // Check if player is already in a team that is NOT the new one (e.g. group changed)
+        Team currentTeam = scoreboard.getEntryTeam(player.getName());
+        if (currentTeam != null && !currentTeam.getName().equals(teamName)) {
+            // If it's one of our teams, remove/unregister it
+            if (currentTeam.getName().startsWith("st_")) {
+                currentTeam.unregister();
+            } else {
+                // If it's a vanilla team or other plugin team, just remove the player from it
+                currentTeam.removeEntry(player.getName());
+            }
+        }
 
         Team team = scoreboard.getTeam(teamName);
         if (team == null) {
@@ -65,9 +90,9 @@ public class NameTagManager {
     }
 
     public void removePlayer(Player player) {
-        String teamName = "st_" + player.getName();
-        Team team = scoreboard.getTeam(teamName);
-        if (team != null) {
+        // Look up the team the player is currently in
+        Team team = scoreboard.getEntryTeam(player.getName());
+        if (team != null && team.getName().startsWith("st_")) {
             team.unregister();
         }
     }
